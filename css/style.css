@@ -1,0 +1,158 @@
+/* ----basic rest------- */
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap');
+*, *::before, *::after{
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+				-webkit-text-smoothing: antialaised;
+}
+html{
+				font-size: 62.5%;
+				font-family: 'Jost', sans-serif;
+}
+body{
+				width: 100vw;
+				min-height: 100vh;
+				background: #f6f6f6;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+}
+.container{
+				width: 300px;
+				background: #ffffff;
+				padding: 3rem;
+				text-align: center;
+				border: none;
+				border-radius: 1rem;
+				box-shadow: 3px 3px 10px rgba(0,0,0,.5),
+	 													 -3px -3px 10px rgba(0,0,0,0.3);
+}
+/* -----heading box--------- */
+.heading-box{
+				margin-bottom: 3rem;
+}
+.heading-box h2{
+				font-size: 2.5rem;
+				margin-bottom: 1rem;
+				color: #171717;
+				text-shadow: 0 5px 3px rgba(125,125,125,0.7);
+				text-transform: uppercase;
+}
+.heading-box h3{
+				font-size: 2rem;
+				color: rgba(125,125,125,0.7);
+				text-transform: capitalize;
+}
+/* -------image box-------- */
+.image-box{
+				height: 240px;
+				border-radius: 50%;
+				overflow: hidden;
+				box-shadow: 3px 3px 10px rgba(0,0,0,.5),
+	 													 -3px -3px 10px rgba(0,0,0,0.3);
+}
+.image-box img{
+				width: 100%;
+				height: 100%;
+}
+/* ------progress style----------- */
+.progress-container{
+				display: flex;
+				flex-direction: column;
+				
+}
+.progress-timer{
+				display: flex;
+				justify-content: space-between;
+				font-size: 1.3rem;
+				font-weight: 600;
+				height: 25px;
+}
+.progress-container{
+				width: 100%;
+				margin: 1rem 0;
+}
+.progress-bar{
+				position: relative;
+				height: 8px;
+				width: 100%;
+				border-radius: 3px;
+			box-shadow:inset 0 2px 3px rgba(0,0,0,.5),
+												  inset 0 -2px 3px rgba(0,0,0,.2);
+				overflow: hidden;
+}
+#progress{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 0%;
+				height: 100%;
+				background-color: black;
+				border-radius: 3px;
+}
+/* ------music icon box------- */
+.icons-box{
+				height: 80px;
+				display: flex;
+		 	font-size: 2rem;
+		 	align-items: center;
+		 	justify-content: space-around;
+}
+.main-icon{
+				height: 45px;
+				width: 45px;
+				background: black;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: #f6f6f6;
+				border-radius: 50%;
+}
+.fa-backward:hover, .fa-forward:hover{
+				color: grey;
+}
+.main-icon:hover{
+				background: #f6f6f6;
+				color: black;
+				box-shadow: 0px 3px 8px rgba(0,0,0,.5);
+}
+.rotate{
+				animation: rotate 3s linear infinite;
+				-o-animation: rotate 3s linear infinite;
+				-moz-animation: rotate 3s linear infinite;
+				-webkit-animation: rotate 3s linear infinite;
+}
+@keyframes rotate{
+				from{
+						transform: rotate(0deg);
+				}
+				to{
+						transform: rotate(360deg);	
+				}
+}
+@-o-keyframes rotate{
+				from{
+						transform: rotate(0deg);
+				}
+				to{
+						transform: rotate(360deg);	
+				}
+}
+@-moz-keyframes rotate{
+				from{
+						transform: rotate(0deg);
+				}
+				to{
+						transform: rotate(360deg);	
+				}
+}
+@-webkit-keyframes rotate{
+				from{
+						transform: rotate(0deg);
+				}
+				to{
+						transform: rotate(360deg);	
+				}
+}
