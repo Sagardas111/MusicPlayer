@@ -3,35 +3,37 @@
 <head>
 				<meta charset="utf-8">
 				<meta name="viewport" content="width=device-width, initial-scale=1">
+				<link rel="icon" type="image/jpg" sizes="32x32" href="images/avatar.jpg">
 				<title>Music Player</title>
 				<link rel="stylesheet" href="css/style.css">
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 				<main class="container">
+								<!-- heading box -->
 								<div class="heading-box">
 												<h2 id="tittle">Song name</h2>
 												<h3 id="artist">Artist name</h3>
 								</div>
-								
+								<!-- image box -->
 								<div class="image-box">
 												<img src="images/audio-0.jpg" alt="">
 								</div>
-								
+								<!-- invisible audio track -->
 								<div class="audio-box">
 												<audio src="audio/audio-0.mp3">
 								</div>
-								
+								<!-- visible progress bar -->
 								<div class="progress-container">
 												<div class="progress-timer">
 																<div id="current-time">0:00</div>
 																<div id="total-time">0:00</div>
 												</div>
-												<div class="progress-bar">
+												<div class="progress-bar" id="progress-bar">
 																<div id="progress"></div>
 												</div>
 								</div>
-								
+								<!-- song controls -->
 								<div class="icons-box">
 												<i class="fas fa-backward icons" id="backward"></i>
 												<div class="main-icon">
@@ -39,11 +41,9 @@
 												</div>
 												<i class="fas fa-forward icons" id="forward"></i>
 								</div>
-								
+									
 				</main>
-				
-				
-				
+			<p id="info">Devloped by <a href="https://www.linkedin.com/in/sagar-das-811161203" target="_blank">Sagar Das.</a></p>
 				<!-- --------------js ------------------>
 				<script src="js/script.js"></script>
 </body>
