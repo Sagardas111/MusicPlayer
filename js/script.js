@@ -3,12 +3,12 @@ const songDb=[
 			name:"audio-0",
 			tittle:"Rise Up"	,
 			artist:"TheFatRat",
-			duration: 170 //in seconds
+			duration: 169 //in seconds
 },{
 			name:"audio-1",
 			tittle:"In The End"	,
 			artist:"Linkin Park",
-			duration: 219
+			duration: 218
 },{
 			name:"audio-2",
 			tittle:"Memories"	,
@@ -34,73 +34,88 @@ const song=document.querySelector('audio');
 const prevButton=document.getElementById('backward');
 const playButton=document.getElementById("play");
 const nextButton=document.getElementById('forward');
-const currentTime=document.querySelector('#current-time');
+const curTime=document.querySelector('#current-time');
 const totalTime=document.querySelector('#total-time');
+const proBar=document.querySelector('#progress-bar');
+
 const progress=document.querySelector('#progress');
 
-let isPlaying=false;
+let Playing=false;
 let songCount=0;
-let currentSecs=0;
 let CurrentMins=0;
 var updateTime;
 
-/* ---function of starting song----------- */
+/* function for starting the song */
 const startSong=()=>{
 				song.play();
-				isPlaying=true;
+				Playing=true;
 playButton.classList.replace("fa-play","fa-pause");
-				songImg.classList.add('rotate');
-totalTime.innerText=Math.trunc(songDb[songCount].duration/60)+":"+songDb[songCount].duration%60;
-				
-				updateTime=	setInterval(function(){	
- if(currentSecs<=songDb[songCount].duration){
-								progress.style.width=(currentSecs/songDb[songCount].duration)*100+"%";
-currentTime.innerText=Math.trunc(currentSecs/60)+":"+currentSecs%60;
-								}else {
-								songCount=(songCount+1)% songDb.length;
-								nextSongData();
-					   startSong();
-								}
-				currentSecs++;
-},1000);
+				songImg.classList.add('rotate');			
 };
 
 /* ---function of stoping song */
 const pauseSong=()=>{
 				song.pause();
-				isPlaying=false;
+				Playing=false;
 playButton.classList.replace("fa-pause","fa-play");
 				songImg.classList.remove('rotate');
 				clearInterval(updateTime);
 };
 
-/* ---function of next/previous song */
+/* ----function of next/previous song----- */
 const nextSongData=()=>{
-			currentSecs=0;
-			clearInterval(updateTime);
-			setInterval(updateTime,1000);
-
    tittle.innerText=songDb[songCount].tittle;
   	artist.innerText=songDb[songCount].artist;
 songImg.src="images/audio-"+songCount+".jpg";
 		 song.src="audio/audio-"+songCount+".mp3";
-}
+		 if(songDb[songCount].duration%60<10){
+		 		 totalTime.innerText= Math.trunc(songDb[songCount].duration/60)+":0"+songDb[songCount].duration%60;
+		 }else{
+		 			totalTime.innerText= Math.trunc(songDb[songCount].duration/60)+":"+songDb[songCount].duration%60;
+		 };
+};
 nextSongData();
+
+/*func of update cur-time and progress  */
+song.addEventListener("timeupdate",function(song){
+			var 	{currentTime} = song.srcElement;
+   if(Math.floor(currentTime) ==songDb[songCount].duration) {
+							songCount=(songCount+1)% songDb.length;
+					 	nextSongData();
+				 		startSong();
+			}else {
+							if(Math.floor(currentTime%60)<10){
+				curTime.innerText=Math.trunc(currentTime/60)+":0"+Math.floor(currentTime%60);
+		 	     progress.style.width=(currentTime/songDb[songCount].duration)*100+"%";	
+							}else{
+				curTime.innerText=Math.trunc(currentTime/60)+":"+Math.floor(currentTime%60);
+			      progress.style.width=(currentTime/songDb[songCount].duration)*100+"%";	
+							}
+			}
+});			
+
+/* flexy song current time ontouch */
+proBar.addEventListener("click",(event)=>{
+				var touchTime=(event.offsetX/event.srcElement.clientWidth)*songDb[songCount].duration;
+				song.currentTime=touchTime;
+});
 
 /* -----play button function call--------- */
 playButton.addEventListener('click',function(){
-				if(!isPlaying) {
+				if(!Playing) {
 							startSong();					
 				}else {
 		 				pauseSong();				
 				};
 });
+
 /* -----forward button function call------ */
 nextButton.addEventListener('click',function(){
 				songCount=(songCount+1)% songDb.length;
 				nextSongData();
 				startSong();
 });
+
 /* --backward button function call-------- */
 prevButton.addEventListener('click',function(){
 				songCount=(songDb.length+songCount-1)% songDb.length;
