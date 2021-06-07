@@ -28,6 +28,7 @@ body{
 				border-radius: 1rem;
 				box-shadow: 3px 3px 10px rgba(0,0,0,.5),
 	 													 -3px -3px 10px rgba(0,0,0,0.3);
+	 		position: relative;
 }
 /* -----heading box--------- */
 .heading-box{
@@ -49,6 +50,11 @@ body{
 				text-transform: capitalize;
 }
 /* -------image box-------- */
+.image-grow{
+				position: relative;
+				width: 100%;
+				height: 270px;
+}
 .image-box{
 				height: 240px;
 				border-radius: 50%;
@@ -56,12 +62,59 @@ body{
 				box-shadow: 3px 3px 10px rgba(0,0,0,.5),
 	 													 -3px -3px 10px rgba(0,0,0,0.3);
 	 		border: 1px solid cyan;
+	 		position: absolute;
+	 		top: 0;
+	 		left: 0;
+	 		z-index: 2;
 }
 .image-box img{
 				width: 100%;
 				height: 100%;
 				border: 2px solid cyan;
 }
+.grow{
+				width: 100%;
+				display: none;
+				flex-direction: row;
+				justify-content: space-between;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				
+}
+.grow-bar{
+				display: block;
+				height: 50px;
+				width: 5px;
+				border-radius: 5px 5px 0 0;
+				overflow: hidden;
+				position: relative;
+}
+.grow-bar::before{
+				content:'';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				background: violet;
+				width: 100%;
+				height: calc(var(--i)/10*100%);
+				border-radius: 5px 5px 0 0;
+				animation: grow 2s ease-in-out infinite;
+				animation-delay: calc(-0.4s*var(--i));
+}
+@keyframes grow{
+				0%,100%
+				{
+					height: 0%;		
+					filter: hue-rotate(0deg);
+				}
+				50%
+				{
+					height: 100%;	
+					filter: hue-rotate(calc(360deg*var(--i)));
+				}
+}
+
 /* ------progress style----------- */
 .progress-container{
 				display: flex;
