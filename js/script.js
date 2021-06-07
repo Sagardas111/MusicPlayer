@@ -29,6 +29,7 @@ const songDb=[
 /* ---getting all elements----- */
 const tittle=document.getElementById("tittle");
 const artist=document.getElementById("artist");
+const grow=document.querySelector(".grow")
 const songImg=document.querySelector('img');
 const song=document.querySelector('audio');
 const prevButton=document.getElementById('backward');
@@ -50,6 +51,7 @@ const startSong=()=>{
 				song.play();
 				Playing=true;
 playButton.classList.replace("fa-play","fa-pause");
+				grow.style.display="flex";
 				songImg.classList.add('rotate');			
 };
 
@@ -58,6 +60,7 @@ const pauseSong=()=>{
 				song.pause();
 				Playing=false;
 playButton.classList.replace("fa-pause","fa-play");
+				grow.style.display="none";
 				songImg.classList.remove('rotate');
 				clearInterval(updateTime);
 };
